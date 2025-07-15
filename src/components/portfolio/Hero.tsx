@@ -100,16 +100,25 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="floating-shape absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg backdrop-blur-sm"></div>
-          <div className="floating-shape absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full backdrop-blur-sm" style={{ animationDelay: '2s' }}></div>
-          <div className="floating-shape absolute bottom-40 left-20 w-12 h-12 bg-gradient-to-r from-primary/30 to-accent/30 rotate-45 backdrop-blur-sm" style={{ animationDelay: '4s' }}></div>
+          {/* Enhanced Floating Elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="floating-shape absolute top-20 left-10 w-20 h-20 mesh-gradient rounded-lg backdrop-blur-sm animate-mesh-shift opacity-30"></div>
+          <div className="floating-shape absolute top-40 right-20 w-16 h-16 aurora-bg rounded-full backdrop-blur-sm animate-aurora-dance opacity-40" style={{ animationDelay: '2s' }}></div>
+          <div className="floating-shape absolute bottom-40 left-20 w-12 h-12 bg-gradient-to-r from-primary/30 to-accent/30 rotate-45 backdrop-blur-sm animate-levitate" style={{ animationDelay: '4s' }}></div>
+          <div className="floating-shape absolute top-60 left-1/2 w-8 h-8 bg-primary/40 rounded-full animate-sparkle" style={{ animationDelay: '1s' }}></div>
+          <div className="floating-shape absolute bottom-60 right-1/3 w-6 h-6 bg-accent/50 rounded-full animate-sparkle" style={{ animationDelay: '3s' }}></div>
+          
+          {/* Magic sparkles */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-sparkle opacity-60" style={{ animationDelay: '0.5s' }}></div>
+          <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-accent rounded-full animate-sparkle opacity-70" style={{ animationDelay: '2.5s' }}></div>
+          <div className="absolute top-1/2 left-3/4 w-2 h-2 bg-primary rounded-full animate-sparkle opacity-50" style={{ animationDelay: '1.5s' }}></div>
         </div>
       </div>
 
-      {/* Background Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent"></div>
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/15 via-accent/5 to-transparent animate-glow-pulse"></div>
+      <div className="absolute inset-0 aurora-bg opacity-20 animate-aurora-dance"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-primary/5 to-accent/5 animate-pulse"></div>
       
       {/* About Modal */}
       <AboutModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} />
