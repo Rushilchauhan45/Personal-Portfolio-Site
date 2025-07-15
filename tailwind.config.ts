@@ -18,6 +18,13 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'orbitron': ['Orbitron', 'sans-serif'],
+				'space': ['Space Grotesk', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'monospace'],
+				'audiowide': ['Audiowide', 'sans-serif'],
+				'exo': ['Exo 2', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

@@ -126,7 +126,44 @@
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    cursor: none;
+  }
+  
+  /* Custom Cursor */
+  .custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease-out;
+  }
+  
+  .custom-cursor-trail {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--accent));
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.6;
+    transition: transform 0.2s ease-out;
+  }
+  
+  .cursor-glow {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, hsl(var(--primary), 0.3), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    transition: transform 0.3s ease-out;
   }
 
   /* Custom scrollbar */
@@ -149,6 +186,30 @@
 }
 
 @layer components {
+  /* Typography Styles */
+  .heading-primary {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  
+  .heading-secondary {
+    font-family: 'Audiowide', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+  
+  .text-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+  
+  .text-futuristic {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
+  
   /* Portfolio specific component styles */
   .glow-text {
     text-shadow: 0 0 20px hsl(var(--glow-cyan));

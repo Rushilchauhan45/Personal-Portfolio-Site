@@ -6,10 +6,14 @@ import Contact from '@/components/portfolio/Contact';
 import SocialSidebar from '@/components/portfolio/SocialSidebar';
 import Scene3D from '@/components/portfolio/Scene3D';
 import ChatWidget from '@/components/portfolio/ChatWidget';
+import CustomCursor from '@/components/ui/CustomCursor';
 
 const Index = () => {
   return (
     <div className="min-h-screen relative">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
       {/* 3D Background Scene */}
       <Scene3D />
       

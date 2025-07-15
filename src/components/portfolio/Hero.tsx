@@ -25,7 +25,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-primary font-medium mb-4 text-lg"
+            className="text-primary font-mono text-code mb-4 text-lg"
           >
             &gt; Hello, World!
           </motion.p>
@@ -35,7 +35,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight heading-primary"
           >
             <span className="hero-text">Pushkar Modi</span>
           </motion.h1>
@@ -47,10 +47,10 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
             className="mb-8"
           >
-            <p className="text-xl md:text-2xl text-muted-foreground mb-2">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-2 text-code font-mono">
               &gt; MERN Stack Developer
             </p>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-space">
               I help business owners and busy web developers to design & develop creative websites 
               that fits their vision and attracts visitors to stay forever.
             </p>
@@ -66,7 +66,7 @@ export default function Hero() {
             <Button 
               size="lg" 
               onClick={() => setIsAboutModalOpen(true)}
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80 text-primary-foreground px-8 py-6 text-lg rounded-xl animate-pulse-glow"
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80 text-primary-foreground px-8 py-6 text-lg rounded-xl animate-pulse-glow font-space font-medium"
             >
               About Me
               <ChevronRight className="w-5 h-5 ml-2" />
@@ -75,7 +75,7 @@ export default function Hero() {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 text-lg rounded-xl"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-6 text-lg rounded-xl font-space font-medium"
             >
               View Projects
             </Button>
@@ -89,7 +89,7 @@ export default function Hero() {
             className="flex flex-col items-center cursor-pointer"
             onClick={scrollToProjects}
           >
-            <p className="text-sm text-muted-foreground mb-4">Explore Work</p>
+            <p className="text-sm text-muted-foreground mb-4 font-space text-futuristic">Explore Work</p>
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
