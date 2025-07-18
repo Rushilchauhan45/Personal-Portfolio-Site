@@ -10,7 +10,7 @@
 
 ## 🚀 Live Demo
 
-**URL**: [Live Portfolio Website](https://rushilchauhan-portfolio.vercel.app)
+**URL**: [Live Portfolio Website](https://rushilchauhan.netlify.app/)
 
 ## 📋 Table of Contents
 
@@ -348,10 +348,10 @@ npm run build && npx netlify deploy --prod --dir=dist
 ## 📞 Contact
 
 **Rushil Chauhan**
-- **Portfolio**: https://rushilchauhan-portfolio.vercel.app
-- **Email**: rushilchauhan45@gmail.com
+- **Portfolio**: [Live Demo](https://rushilchauhan.netlify.app/)
+- **Email**: chauhanrushil45@gmail.com
 - **GitHub**: [@Rushilchauhan45](https://github.com/Rushilchauhan45)
-- **LinkedIn**: [Rushil Chauhan](https://www.linkedin.com/in/rushil-chauhan)
+- **LinkedIn**: [Rushil Chauhan](https://www.linkedin.com/in/rushil-chauhan-b50529304/)
 
 ---
 
