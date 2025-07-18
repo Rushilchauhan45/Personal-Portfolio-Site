@@ -28,6 +28,20 @@ export default function Navigation() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
+	// Prevent body scrolling when mobile menu is open
+	useEffect(() => {
+		if (isMobileMenuOpen) {
+			document.body.classList.add('mobile-menu-open');
+		} else {
+			document.body.classList.remove('mobile-menu-open');
+		}
+		
+		// Cleanup on unmount
+		return () => {
+			document.body.classList.remove('mobile-menu-open');
+		};
+	}, [isMobileMenuOpen]);
+
 	return (
 		<motion.nav
 			initial={{ y: -100 }}
@@ -169,7 +183,7 @@ export default function Navigation() {
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
-								className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99998] md:hidden"
+								className="fixed inset-0 bg-black/60 backdrop-blur-sm mobile-nav-backdrop md:hidden"
 								onClick={() => setIsMobileMenuOpen(false)}
 							/>
 							
@@ -184,22 +198,22 @@ export default function Navigation() {
 									damping: 30,
 									mass: 0.8
 								}}
-								className="fixed top-0 right-0 h-full w-80 bg-gradient-to-br from-gray-900/95 via-black/90 to-gray-900/95 backdrop-blur-2xl border-l border-border z-[99999] md:hidden shadow-2xl"
+								className="fixed top-0 right-0 mobile-nav-sidebar mobile-nav-content w-[85vw] max-w-sm bg-gradient-to-br from-gray-900/95 via-black/90 to-gray-900/95 backdrop-blur-2xl border-l border-border md:hidden shadow-2xl"
 							>
 								{/* Header */}
-								<div className="flex items-center justify-between p-6 border-b border-border">
-									<div className="flex items-center space-x-3">
+								<div className="mobile-nav-header flex items-center justify-between p-4 sm:p-6 border-b border-border">
+									<div className="flex items-center space-x-2 sm:space-x-3">
 										<div className="relative">
-											<div className="w-10 h-10 bg-gradient-to-br from-primary via-accent to-primary rounded-2xl flex items-center justify-center">
-												<span className="text-white font-orbitron font-black text-lg">R</span>
+											<div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary via-accent to-primary rounded-2xl flex items-center justify-center">
+												<span className="text-white font-orbitron font-black text-base sm:text-lg">R</span>
 											</div>
-											<div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full animate-pulse"></div>
+											<div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-accent rounded-full animate-pulse"></div>
 										</div>
 										<div>
-											<h3 className="font-orbitron font-bold text-lg bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+											<h3 className="font-orbitron font-bold text-base sm:text-lg bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
 												PORTFOLIO
 											</h3>
-											<p className="text-xs text-muted-foreground font-mono tracking-wider">
+											<p className="text-[10px] sm:text-xs text-muted-foreground font-mono tracking-wider">
 												DEVELOPER
 											</p>
 										</div>
@@ -215,13 +229,14 @@ export default function Navigation() {
 								</div>
 
 								{/* Navigation Items */}
-								<div className="flex flex-col p-6 space-y-2">
+								<div className="mobile-nav-container flex flex-col p-4 sm:p-6 space-y-1 sm:space-y-2 overflow-y-auto">
 									{navItems.map((item, index) => (
 										<motion.div
 											key={item.path}
 											initial={{ opacity: 0, x: 20 }}
 											animate={{ opacity: 1, x: 0 }}
 											transition={{ delay: index * 0.1 }}
+											className="mobile-nav-item"
 										>
 											{item.name === 'Credentials' ? (
 												<button
@@ -232,28 +247,28 @@ export default function Navigation() {
 														}
 														setIsMobileMenuOpen(false);
 													}}
-													className="flex items-center px-4 py-3 rounded-xl transition-all duration-300 group text-muted-foreground hover:text-foreground hover:bg-white/5 hover:border-white/10 border border-transparent w-full text-left"
+													className="flex items-center px-3 py-2 sm:px-4 sm:py-3 rounded-xl transition-all duration-300 group text-muted-foreground hover:text-foreground hover:bg-white/5 hover:border-white/10 border border-transparent w-full text-left"
 												>
-													<div className="flex items-center space-x-3">
-														<div className="w-2 h-2 rounded-full transition-all duration-300 bg-muted-foreground/30 group-hover:bg-primary/50"></div>
-														<span className="font-medium">{item.name}</span>
+													<div className="flex items-center space-x-2 sm:space-x-3">
+														<div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 bg-muted-foreground/30 group-hover:bg-primary/50"></div>
+														<span className="font-medium text-sm sm:text-base">{item.name}</span>
 													</div>
 												</button>
 											) : (
 												<Link
 													to={item.path}
 													onClick={() => setIsMobileMenuOpen(false)}
-													className={`flex items-center px-4 py-3 rounded-xl transition-all duration-300 group ${
+													className={`flex items-center px-3 py-2 sm:px-4 sm:py-3 rounded-xl transition-all duration-300 group ${
 														location.pathname === item.path
 															? 'bg-primary/10 text-primary border border-primary/20 shadow-lg shadow-primary/20'
 															: 'text-muted-foreground hover:text-foreground hover:bg-white/5 hover:border-white/10 border border-transparent'
 													}`}
 												>
-													<div className="flex items-center space-x-3">
-														<div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+													<div className="flex items-center space-x-2 sm:space-x-3">
+														<div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
 															location.pathname === item.path ? 'bg-primary' : 'bg-muted-foreground/30 group-hover:bg-primary/50'
 														}`}></div>
-														<span className="font-medium">{item.name}</span>
+														<span className="font-medium text-sm sm:text-base">{item.name}</span>
 													</div>
 												</Link>
 											)}
@@ -265,10 +280,11 @@ export default function Navigation() {
 										initial={{ opacity: 0, x: 20 }}
 										animate={{ opacity: 1, x: 0 }}
 										transition={{ delay: 0.4 }}
-										className="mt-6 pt-6 border-t border-border"
+										className="mt-4 pt-4 sm:mt-6 sm:pt-6 border-t border-border"
 									>
 										<Button
 											variant="outline"
+											size="sm"
 											className="w-full relative group bg-gradient-to-r from-card/50 to-card/30 border-2 border-primary/20 hover:border-primary/40 text-primary hover:text-white transition-all duration-300 overflow-hidden"
 										>
 											{/* Animated background */}
@@ -276,12 +292,12 @@ export default function Navigation() {
 											
 											{/* Button content */}
 											<div className="relative flex items-center justify-center space-x-2">
-												<span className="font-medium tracking-wide">Resume</span>
+												<span className="font-medium tracking-wide text-sm sm:text-base">Resume</span>
 												<motion.div
 													animate={{ rotate: [0, 10, -10, 0] }}
 													transition={{ duration: 2, repeat: Infinity }}
 												>
-													<ExternalLink className="w-4 h-4" />
+													<ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
 												</motion.div>
 											</div>
 											
@@ -295,12 +311,12 @@ export default function Navigation() {
 										initial={{ opacity: 0, x: 20 }}
 										animate={{ opacity: 1, x: 0 }}
 										transition={{ delay: 0.5 }}
-										className="mt-8 pt-6 border-t border-border text-center"
+										className="mobile-nav-footer mt-6 pt-4 sm:mt-8 sm:pt-6 border-t border-border text-center"
 									>
-										<p className="text-sm text-muted-foreground">
+										<p className="text-xs sm:text-sm text-muted-foreground">
 											© 2025 Rushil Chauhan
 										</p>
-										<p className="text-xs text-muted-foreground mt-1">
+										<p className="text-[10px] sm:text-xs text-muted-foreground mt-1">
 											Full Stack Developer
 										</p>
 									</motion.div>
